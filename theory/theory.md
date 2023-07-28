@@ -22,8 +22,6 @@
 - findAll()
 - deleteById()
 
-![img_1.png](img_1.png)
-
 ## SQL
 
 - SELECT
