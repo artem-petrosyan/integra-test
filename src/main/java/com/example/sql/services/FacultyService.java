@@ -1,8 +1,11 @@
 package com.example.sql.services;
 
 import com.example.sql.exception.FacultyNotFoundException;
+import com.example.sql.exception.StudentNotFoundException;
 import com.example.sql.model.Faculty;
+import com.example.sql.model.Student;
 import com.example.sql.repository.FacultyRepository;
+import com.example.sql.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -11,9 +14,12 @@ import java.util.Collection;
 public class FacultyService {
 
     private final FacultyRepository facultyRepository;
+    private final StudentRepository studentRepository;
 
-    public FacultyService(FacultyRepository facultyRepository) {
+    public FacultyService(FacultyRepository facultyRepository,
+                          StudentRepository studentRepository) {
         this.facultyRepository = facultyRepository;
+        this.studentRepository = studentRepository;
     }
 
     public Faculty create(Faculty faculty) {
@@ -43,5 +49,15 @@ public class FacultyService {
 
     public Collection<Faculty> getByColor(String color) {
         return facultyRepository.findAllByColor(color);
+    }
+
+    public Collection<Faculty> getAllByNameOrColor(String name, String color) {
+        return facultyRepository.findAllByColorLikeIgnoreCaseOrNameLikeIgnoreCase(color, name);
+    }
+
+    public Faculty getByStudentId(Long studentId) {
+        return studentRepository.findById(studentId)
+                .map(Student::getFaculty)
+                .orElseThrow(StudentNotFoundException::new);
     }
 }
