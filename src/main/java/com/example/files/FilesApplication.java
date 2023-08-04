@@ -1,13 +1,13 @@
-package com.example.sql;
+package com.example.files;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SqlApplication {
+public class FilesApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SqlApplication.class, args);
+        SpringApplication.run(FilesApplication.class, args);
     }
 
 }

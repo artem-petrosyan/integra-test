@@ -1,4 +1,4 @@
-package com.example.sql.model;
+package com.example.files.model;
 
 import javax.persistence.*;
 import java.util.Objects;

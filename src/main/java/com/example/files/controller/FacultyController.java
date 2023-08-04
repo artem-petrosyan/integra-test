@@ -1,7 +1,7 @@
-package com.example.sql.controller;
+package com.example.files.controller;
 
-import com.example.sql.model.Faculty;
-import com.example.sql.services.FacultyService;
+import com.example.files.model.Faculty;
+import com.example.files.services.FacultyService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;

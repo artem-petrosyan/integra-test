@@ -1,7 +1,7 @@
-package com.example.sql.repository;
+package com.example.files.repository;
 
 
-import com.example.sql.model.Faculty;
+import com.example.files.model.Faculty;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

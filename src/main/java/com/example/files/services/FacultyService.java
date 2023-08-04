@@ -1,11 +1,11 @@
-package com.example.sql.services;
+package com.example.files.services;
 
-import com.example.sql.exception.FacultyNotFoundException;
-import com.example.sql.exception.StudentNotFoundException;
-import com.example.sql.model.Faculty;
-import com.example.sql.model.Student;
-import com.example.sql.repository.FacultyRepository;
-import com.example.sql.repository.StudentRepository;
+import com.example.files.exception.FacultyNotFoundException;
+import com.example.files.exception.StudentNotFoundException;
+import com.example.files.model.Faculty;
+import com.example.files.model.Student;
+import com.example.files.repository.FacultyRepository;
+import com.example.files.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;

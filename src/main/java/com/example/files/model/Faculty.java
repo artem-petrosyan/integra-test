@@ -1,4 +1,4 @@
-package com.example.sql.model;
+package com.example.files.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
