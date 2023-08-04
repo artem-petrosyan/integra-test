@@ -1,9 +1,27 @@
 # Потоки данных. Работа с файлами
 
-## Пакет java.io
+Пример:  `System.in / System.out`
 
-Для работы с байтами: `InputStream / OutputStream`
+### Пакет java.io
 
-Для работы с тексом: `Reader / Writer`
+Для работы с байтами:
 
-## Класс java.nio.file.Files
+- `InputStream / OutputStream`
+- `FileInputStream / FileOutputStream`
+- `BufferedInputStream / BufferedOutputStream`
+
+Для работы с тексом:
+
+- `Reader / Writer`
+- `FileReader / FileWriter`
+- `BufferedReader / BufferedWriter`
+
+### Класс `java.nio.file.Files`
+
+Методы:
+
+- `lines()`
+- `writeString()`
+- `createDirectories()`
+
+### [Домашка](https://skyengpublic.notion.site/3-5-aaa05bcb8ab1470e9990df789be7c955)
