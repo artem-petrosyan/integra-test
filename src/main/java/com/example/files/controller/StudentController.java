@@ -1,9 +1,14 @@
 package com.example.files.controller;
 
 import com.example.files.model.Student;
+import com.example.files.services.AvatarService;
 import com.example.files.services.StudentService;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Collection;
 
 @RestController
@@ -11,9 +16,11 @@ import java.util.Collection;
 public class StudentController {
 
     private final StudentService service;
+    private final AvatarService avatarService;
 
-    public StudentController(StudentService service) {
+    public StudentController(StudentService service, AvatarService avatarService) {
         this.service = service;
+        this.avatarService = avatarService;
     }
 
     @GetMapping("/{id}")
@@ -57,4 +64,15 @@ public class StudentController {
     public Collection<Student> getAllByFaculty(Long facultyId) {
         return service.getByFacultyId(facultyId);
     }
+
+    @PostMapping(value = "/{studentId}/avatart", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<Long> save(@PathVariable Long studentId, @RequestBody MultipartFile multipartFile) {
+        try {
+            return ResponseEntity.ok(avatarService.save(studentId, multipartFile));
+        } catch (IOException e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
 }
