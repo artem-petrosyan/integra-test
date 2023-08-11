@@ -1,27 +1,61 @@
-# Потоки данных. Работа с файлами
+# Тестирование веб-приложений в Spring Boot
 
-Пример:  `System.in / System.out`
+## In-memory DB
 
-### Пакет java.io
+pom.xml
 
-Для работы с байтами:
+```xml
 
-- `InputStream / OutputStream`
-- `FileInputStream / FileOutputStream`
-- `BufferedInputStream / BufferedOutputStream`
+<dependency>
+    <groupId>com.h2database</groupId>
+    <artifactId>h2</artifactId>
+    <scope>test</scope>
+</dependency>
+```
 
-Для работы с тексом:
+application.properties
 
-- `Reader / Writer`
-- `FileReader / FileWriter`
-- `BufferedReader / BufferedWriter`
+```
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driver-class-name=org.h2.Driver
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+```
 
-### Класс `java.nio.file.Files`
+## TestRestTemplate
 
-Методы:
+```java
+@SpringBootTest
+public class MyTest {
+    @Autowired
+    TestRestTemplate template;
 
-- `lines()`
-- `writeString()`
-- `createDirectories()`
+    @Test
+    void my_test()  {
+        ResponseEntity<String> response 
+                = restTemplate.getForEntity("/my-endpoint", String.class);
+        //...
+    }
+}
+```
 
-### [Домашка](https://skyengpublic.notion.site/3-5-aaa05bcb8ab1470e9990df789be7c955)
+## WebMvcTest
+
+```java
+@WebMvcTest(MyController.class)
+public class MyTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    //mock and spy
+    
+    @Test
+    public void testControllerMethod() throws Exception {
+        mockMvc.perform(get("/my-endpoint"))
+               .andExpect(status().isOk())
+               .andExpect(content().string("Expected Response"));
+    }
+}
+```
+
+## [Домашка](https://skyengpublic.notion.site/3-6-Spring-Boot-0070e5697e594bd0a5c6e5f96a29f950)
