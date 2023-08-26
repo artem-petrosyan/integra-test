@@ -24,7 +24,8 @@ spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
 ## TestRestTemplate
 
 ```java
-@SpringBootTest
+
+@SpringBootTest(classes = MyApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class MyTest {
     @Autowired
     TestRestTemplate template;
